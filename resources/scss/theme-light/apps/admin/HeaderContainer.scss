@@ -1,0 +1,9 @@
+$neoMap: map-merge($neoMap, (
+    'admin-headercontainer-border-color': #1c60a0
+));
+
+@if $useCssVars == true {
+    :root .neo-theme-light { // .admin-headercontainer
+        --admin-headercontainer-border-color: #{neo(admin-headercontainer-border-color)};
+    }
+}

@@ -1,0 +1,23 @@
+[
+    {
+        "id"      : 1,
+        "isLeaf"  : false,
+        "name"    : "Users",
+        "parentId": null,
+        "path"    : null
+    },
+    {
+        "id"      : 2,
+        "isLeaf"  : true,
+        "name"    : "Table",
+        "parentId": 1,
+        "path"    : "../view/content/Label1.mjs"
+    },
+    {
+        "id"      : 3,
+        "isLeaf"  : true,
+        "name"    : "Create",
+        "parentId": 1,
+        "path"    : "../view/content/Label2.mjs"
+    }
+]
