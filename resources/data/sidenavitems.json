@@ -9,9 +9,9 @@
     {
         "id"      : 2,
         "isLeaf"  : true,
-        "name"    : "Table",
+        "name"    : "UserTable",
         "parentId": 1,
-        "path"    : "Label1"
+        "path"    : "UserTableContainer"
     },
     {
         "id"      : 3,
