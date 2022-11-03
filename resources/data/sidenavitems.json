@@ -11,13 +11,13 @@
         "isLeaf"  : true,
         "name"    : "Table",
         "parentId": 1,
-        "path"    : "../view/content/Label1.mjs"
+        "path"    : "Label1"
     },
     {
         "id"      : 3,
         "isLeaf"  : true,
         "name"    : "Create",
         "parentId": 1,
-        "path"    : "../view/content/Label2.mjs"
+        "path"    : "Label2"
     }
 ]
