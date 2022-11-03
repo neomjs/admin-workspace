@@ -25,7 +25,7 @@ class MainContainerController extends Component {
             contentContainer.removeAt(0);
         }
 
-        import(record.path).then(module => {
+        import(`../view/content/${record.path}.mjs`).then(module => {
             console.log(module.default);
 
             contentContainer.add({
