@@ -1,6 +1,7 @@
-import BaseViewport    from '../../../node_modules/neo.mjs/src/container/Viewport.mjs';
-import HeaderContainer from './HeaderContainer.mjs';
-import MainContainer   from './MainContainer.mjs';
+import BaseViewport       from '../../../node_modules/neo.mjs/src/container/Viewport.mjs';
+import HeaderContainer    from './HeaderContainer.mjs';
+import MainContainer      from './MainContainer.mjs';
+import ViewportController from './ViewportController.mjs';
 
 /**
  * @class Admin.view.Viewport
@@ -17,6 +18,10 @@ class Viewport extends BaseViewport {
          * @member {Boolean} autoMount=true
          */
         autoMount: true,
+        /**
+         * @member {Neo.controller.Component} controller=ViewportController
+         */
+        controller: ViewportController,
         /**
          * @member {Object[]} items
          */

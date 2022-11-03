@@ -1,11 +1,12 @@
-import Base   from '../../../node_modules/neo.mjs/src/container/Base.mjs';
-import Label from '../../../node_modules/neo.mjs/src/component/Label.mjs';
+import Button  from '../../../node_modules/neo.mjs/src/button/Base.mjs';
+import Label   from '../../../node_modules/neo.mjs/src/component/Label.mjs';
+import Toolbar from '../../../node_modules/neo.mjs/src/toolbar/Base.mjs';
 
 /**
  * @class Admin.view.HeaderContainer
- * @extends Neo.container.Base
+ * @extends Neo.toolbar.Base
  */
-class HeaderContainer extends Base {
+class HeaderContainer extends Toolbar {
     static getConfig() {return {
         /**
          * @member {String} className='Admin.view.HeaderContainer'
@@ -22,6 +23,11 @@ class HeaderContainer extends Base {
         items: [{
             module: Label,
             text  : 'Header'
+        }, '->', {
+            module : Button,
+            handler: 'onSwitchThemeButtonClick',
+            iconCls: 'fa fa-moon',
+            text   : 'Dark Theme'
         }]
     }}
 }
