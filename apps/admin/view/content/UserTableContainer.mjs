@@ -13,19 +13,20 @@ class UserTableContainer extends Container {
          */
         className: 'Admin.view.content.UserTableContainer',
         /**
+         * @member {String[]} cls=['admin-user-table','neo-table-container']
+         */
+        cls: ['admin-user-table', 'neo-table-container'],
+        /**
          * @member {Object[]} columns
          */
         columns: [{
             dataField: 'id',
-            flex     : 1,
             text     : 'Id'
         }, {
             dataField: 'firstname',
-            flex     : 1,
             text     : 'Firstname'
         }, {
             dataField: 'lastname',
-            flex     : 1,
             text     : 'Lastname'
         }],
         /**
