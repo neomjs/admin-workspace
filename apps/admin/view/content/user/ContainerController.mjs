@@ -33,12 +33,27 @@ class ContainerController extends Component {
                     appName        : button.appName,
                     closeAction    : 'hide',
                     height         : 400,
-                    width          : 300
+                    width          : 300,
+
+                    listeners: {
+                        submit: me.onUserFormSubmit.bind(me)
+                    }
                 });
             });
         } else {
             me.dialog.show();
         }
+    }
+
+    /**
+     * @param {Object} data
+     */
+    onUserFormSubmit(data) {
+        this.getReference('user-table').store.add({
+            firstname: data.firstname,
+            id       : 'user_4', // todo: dynamic ids
+            lastname : data.lastname
+        });
     }
 }
 
