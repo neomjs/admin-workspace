@@ -23,9 +23,6 @@ class Dialog extends Base {
                 padding: '1em'
             }
         },
-        headerConfig: {
-            flex: 'none' // todo: framework level
-        },
         /**
          * @member {Neo.controller.Component} controller=DialogController
          */
@@ -34,14 +31,11 @@ class Dialog extends Base {
          * @member {Object[]} items
          */
         items: [{
-            module   : FormContainer,
-            flex     : 1,
-            reference: 'user-form',
-            style    : {padding: 0},
-
-            itemDefaults: {
-                flex: 'none'
-            },
+            module      : FormContainer,
+            flex        : 1,
+            itemDefaults: {flex: 'none'},
+            reference   : 'user-form',
+            style       : {padding: 0},
 
             items: [{
                 module   : TextField,
@@ -58,11 +52,7 @@ class Dialog extends Base {
             handler: 'onSubmitButtonClick',
             style  : {marginTop: 'auto'},
             text   : 'Submit'
-        }],
-        /**
-         * @member {Object} layout
-         */
-        layout: {ntype: 'vbox', align: 'stretch'}
+        }]
     }}
 }
 
