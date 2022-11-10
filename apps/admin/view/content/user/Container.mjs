@@ -29,7 +29,8 @@ class Container extends Base {
                 text   : 'Create User'
             }]
         }, {
-            module: TableContainer
+            module   : TableContainer,
+            reference: 'user-table'
         }]
     }}
 }

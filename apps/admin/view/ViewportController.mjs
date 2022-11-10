@@ -20,30 +20,27 @@ class ViewportController extends Component {
     onSwitchThemeButtonClick(data) {
         let me         = this,
             button     = data.component,
-            viewport   = me.component.down('table-container'),
             themeLight = button.text === 'Theme Light',
-            buttonText, cls, iconCls, theme;
+            buttonText, iconCls, oldTheme, theme;
 
         if (themeLight) {
             buttonText = 'Theme Dark';
             iconCls    = 'fa fa-moon';
+            oldTheme   = 'neo-theme-dark';
             theme      = 'neo-theme-light';
         } else {
             buttonText = 'Theme Light';
             iconCls    = 'fa fa-sun';
+            oldTheme   = 'neo-theme-light';
             theme      = 'neo-theme-dark';
         }
 
-        cls = [...viewport.cls];
-
-        viewport.cls.forEach(item => {
-            if (item.includes('neo-theme')) {
-                NeoArray.remove(cls, item);
+        Neo.applyDeltas(me.appName, {
+            cls: {
+                add   : [theme],
+                remove: [oldTheme]
             }
         });
-
-        NeoArray.add(cls, theme);
-        viewport.cls = cls;
 
         button.set({
             iconCls,
