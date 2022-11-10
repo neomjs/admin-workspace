@@ -1,11 +1,11 @@
-import Container from '../../../../node_modules/neo.mjs/src/table/Container.mjs';
-import UserStore from '../../store/Users.mjs'
+import Container from '../../../../../node_modules/neo.mjs/src/table/Container.mjs';
+import UserStore from '../../../store/Users.mjs'
 
 /**
- * @class Admin.view.content.UserTableContainer
+ * @class Admin.view.content.TableContainer
  * @extends Neo.table.Container
  */
-class UserTableContainer extends Container {
+class TableContainer extends Container {
     static getConfig() {return {
         /**
          * @member {String} className='Admin.view.content.UserTableContainer'
@@ -36,6 +36,6 @@ class UserTableContainer extends Container {
     }}
 }
 
-Neo.applyClassConfig(UserTableContainer);
+Neo.applyClassConfig(TableContainer);
 
-export default UserTableContainer;
+export default TableContainer;

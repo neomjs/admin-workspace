@@ -11,7 +11,7 @@
         "isLeaf"  : true,
         "name"    : "UserTable",
         "parentId": 1,
-        "path"    : "UserTableContainer"
+        "path"    : "user/Container"
     },
     {
         "id"      : 3,
