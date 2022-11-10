@@ -17,8 +17,6 @@ class MainContainerController extends Component {
      * @param {Object} record
      */
     onSideNavItemClick(record) {
-        console.log('onSideNavItemClick', record.path);
-
         let contentContainer = this.getReference('content-container');
 
         if (contentContainer.items.length > 0) {
@@ -26,8 +24,6 @@ class MainContainerController extends Component {
         }
 
         import(`../view/content/${record.path}.mjs`).then(module => {
-            console.log(module.default);
-
             contentContainer.add({
                 module: module.default
             });

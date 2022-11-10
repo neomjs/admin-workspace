@@ -20,7 +20,7 @@ class ViewportController extends Component {
     onSwitchThemeButtonClick(data) {
         let me         = this,
             button     = data.component,
-            viewport   = me.component,
+            viewport   = me.component.down('table-container'),
             themeLight = button.text === 'Theme Light',
             buttonText, cls, iconCls, theme;
 
