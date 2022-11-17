@@ -30,7 +30,23 @@ class Dialog extends Base {
         /**
          * @member {Object[]} items
          */
-        items: [{
+        items: null,
+        /**
+         * @member {Object} record_=null
+         */
+        record_: null
+    }}
+
+    /**
+     *
+     * @param config
+     */
+    construct(config) {
+        super.construct(config);
+
+        let me = this;
+
+        me.items = [{
             module      : FormContainer,
             flex        : 1,
             itemDefaults: {flex: 'none'},
@@ -40,11 +56,14 @@ class Dialog extends Base {
             items: [{
                 module   : TextField,
                 labelText: 'Firstname',
-                name     : 'firstname'
+                name     : 'firstname',
+                value    : me.record.firstname
             }, {
                 module   : TextField,
                 labelText: 'Lastname',
-                name     : 'lastname'
+                name     : 'lastname',
+                // todo: value    : '@config:record.lastname'
+                value    : me.record.lastname
             }]
         }, {
             module : Button,
@@ -53,7 +72,17 @@ class Dialog extends Base {
             style  : {marginTop: 'auto'},
             text   : 'Submit'
         }]
-    }}
+    }
+
+    /**
+     * Triggered after the record config got changed
+     * @param {Object} value
+     * @param {Object} oldValue
+     * @protected
+     */
+    afterSetRecord(value, oldValue) {
+        oldValue && this.down({reference: 'user-form'}).setValues(value)
+    }
 }
 
 Neo.applyClassConfig(Dialog);

@@ -22,8 +22,8 @@ class DialogController extends Component {
             form   = me.getReference('user-form');
 
         dialog.fire('submit', {
-            ...form.getValues(),
-            scope: dialog
+            formValues: form.getValues(),
+            scope     : dialog
         });
     }
 }
