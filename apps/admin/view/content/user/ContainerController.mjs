@@ -18,7 +18,37 @@ class ContainerController extends Component {
         className: 'Admin.view.content.user.ContainerController'
     }}
 
+    showDialog(record, animateTargetId) {
+        let me = this;
+
+        if (!me.dialog) {
+            import('./Dialog.mjs').then(module => {
+                me.dialog = Neo.create({
+                    module     : module.default,
+                    animateTargetId,
+                    appName    : me.component.appName,
+                    closeAction: 'hide',
+                    height     : 400,
+                    record,
+                    width      : 300,
+
+                    listeners: {
+                        submit: me.onUserFormSubmit.bind(me)
+                    }
+                });
+            });
+        } else {
+            me.dialog.set({
+                animateTargetId,
+                record
+            });
+
+            me.dialog.show();
+        }
+    }
+
     /**
+     * todo: use showDialog()
      * @param {Object} data
      */
     onCreateUserButtonClick(data) {
@@ -48,12 +78,39 @@ class ContainerController extends Component {
     /**
      * @param {Object} data
      */
+    onEditIconClick(data) {
+        let me    = this,
+            table = me.getReference('user-table'),
+            item, record;
+
+        for (item of data.path) {
+            if (item.cls.includes('neo-table-row')) {
+                record = table.getView().getRecordByRowId(item.id);
+
+                console.log(record, data.path[1]);
+
+                me.showDialog(record, data.path[1].id);
+            }
+        }
+    }
+
+    /**
+     * @param {Object} data
+     */
     onUserFormSubmit(data) {
-        this.getReference('user-table').store.add({
-            firstname: data.firstname,
-            id       : 'user_4', // todo: dynamic ids
-            lastname : data.lastname
-        });
+        let me     = this,
+            record = me.dialog?.record;
+
+        if (record) {
+            record.set(data.formValues);
+            me.dialog.hide();
+        } else {
+            me.getReference('user-table').store.add({
+                firstname: data.firstname,
+                id       : 'user_4', // todo: dynamic ids
+                lastname : data.lastname
+            })
+        }
     }
 }
 
