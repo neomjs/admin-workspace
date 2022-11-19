@@ -30,23 +30,7 @@ class Dialog extends Base {
         /**
          * @member {Object[]} items
          */
-        items: null,
-        /**
-         * @member {Object} record_=null
-         */
-        record_: null
-    }}
-
-    /**
-     *
-     * @param config
-     */
-    construct(config) {
-        super.construct(config);
-
-        let me = this;
-
-        me.items = [{
+        items: [{
             module      : FormContainer,
             flex        : 1,
             itemDefaults: {flex: 'none'},
@@ -57,13 +41,12 @@ class Dialog extends Base {
                 module   : TextField,
                 labelText: 'Firstname',
                 name     : 'firstname',
-                value    : me.record.firstname
+                value    : '@config:record.lastname'
             }, {
                 module   : TextField,
                 labelText: 'Lastname',
                 name     : 'lastname',
-                // todo: value    : '@config:record.lastname'
-                value    : me.record.lastname
+                value    : '@config:record.lastname'
             }]
         }, {
             module : Button,
@@ -71,8 +54,12 @@ class Dialog extends Base {
             handler: 'onSubmitButtonClick',
             style  : {marginTop: 'auto'},
             text   : 'Submit'
-        }]
-    }
+        }],
+        /**
+         * @member {Object} record_=null
+         */
+        record_: null
+    }}
 
     /**
      * Triggered after the record config got changed
