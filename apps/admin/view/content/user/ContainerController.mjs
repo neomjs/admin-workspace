@@ -87,9 +87,7 @@ class ContainerController extends Component {
             if (item.cls.includes('neo-table-row')) {
                 record = table.getView().getRecordByRowId(item.id);
 
-                console.log(record, data.path[1]);
-
-                me.showDialog(record, data.path[1].id);
+                me.showDialog(record, data.path[0].id);
             }
         }
     }

@@ -29,10 +29,7 @@ class TableContainer extends Container {
             dataField: 'lastname',
             text     : 'Lastname'
         }, {
-            text: '',
-            renderer: data => {
-                return '<i class="neo-edit fa fa-pencil"></i>';
-            }
+            renderer: 'renderEditAction'
         }],
         /**
          * @member {Object[]} domListeners
@@ -46,6 +43,14 @@ class TableContainer extends Container {
          */
         store: UserStore
     }}
+
+    /**
+     * @param {Object} data
+     * @returns {String}
+     */
+    renderEditAction(data) {
+        return `<i class="neo-edit fa fa-pencil" id="${this.id}__${data.record.id}__editAction"></i>`;
+    }
 }
 
 Neo.applyClassConfig(TableContainer);
