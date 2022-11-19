@@ -35,21 +35,17 @@ class TableContainer extends Container {
             }
         }],
         /**
+         * @member {Object[]} domListeners
+         */
+        domListeners: [{
+            click   : 'onEditIconClick',
+            delegate: '.neo-edit'
+        }],
+        /**
          * @member {Neo.data.Store} store=UserStore
          */
         store: UserStore
     }}
-
-    construct(config) {
-        super.construct(config);
-
-        let me = this;
-
-        me.addDomListeners({
-            click   : 'onEditIconClick',
-            delegate: '.neo-edit'
-        });
-    }
 }
 
 Neo.applyClassConfig(TableContainer);
