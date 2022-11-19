@@ -43,16 +43,12 @@ class TableContainer extends Container {
     construct(config) {
         super.construct(config);
 
-        let me    = this,
-            scope = me.getController();
-
-        // todo: string based listener does not work
+        let me = this;
 
         me.addDomListeners({
-            click   : scope.onEditIconClick,
-            delegate: '.neo-edit',
-            scope
-        })
+            click   : 'onEditIconClick',
+            delegate: '.neo-edit'
+        });
     }
 }
 

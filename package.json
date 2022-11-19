@@ -19,6 +19,6 @@
         "watch-themes": "node ./node_modules/neo.mjs/buildScripts/watchThemes.mjs"
     },
     "dependencies": {
-        "neo.mjs": "^4.3.15"
+        "neo.mjs": "^4.3.16"
     }
 }
