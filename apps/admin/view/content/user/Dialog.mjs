@@ -41,7 +41,7 @@ class Dialog extends Base {
                 module   : TextField,
                 labelText: 'Firstname',
                 name     : 'firstname',
-                value    : '@config:record.lastname'
+                value    : '@config:record.firstname'
             }, {
                 module   : TextField,
                 labelText: 'Lastname',
