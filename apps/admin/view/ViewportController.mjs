@@ -15,6 +15,50 @@ class ViewportController extends Component {
     }}
 
     /**
+     *
+     */
+    onComponentConstructed() {
+        super.onComponentConstructed();
+
+        if (!Neo.config.hash) {
+            this.onHashChange({
+                hashString: ''
+            })
+        }
+    }
+
+    /**
+     * @param {Object} value
+     * @param {Object} oldValue
+     */
+    async onHashChange(value, oldValue) {
+        let viewport = this.component;
+
+        // todo: implement container.removeAll()
+        while (viewport.items.length > 0) {
+            viewport.removeAt(0);
+        }
+
+        if (value.hashString === '/main') {
+            let [HeaderContainer, MainContainer] = await Promise.all([
+                import('./HeaderContainer.mjs'),
+                import('./MainContainer.mjs')
+            ]);
+
+            viewport.add([{
+                    module: HeaderContainer.default,
+                    flex  : 'none'
+                }, {
+                module: MainContainer.default,
+            }])
+        } else {
+            let LoginContainer = await import('./login/Container.mjs');
+
+            viewport.add(LoginContainer.default);
+        }
+    }
+
+    /**
      * @param {Object} data
      */
     onSwitchThemeButtonClick(data) {
