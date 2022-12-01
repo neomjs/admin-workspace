@@ -14,6 +14,9 @@ class ViewportController extends Component {
         className: 'Admin.view.ViewportController'
     }}
 
+    /**
+     *
+     */
     onComponentConstructed() {
         super.onComponentConstructed();
 
@@ -29,17 +32,18 @@ class ViewportController extends Component {
      * @param {Object} oldValue
      */
     async onHashChange(value, oldValue) {
-        console.log('onHashChange', value);
-
         let viewport = this.component;
+
+        // todo: implement container.removeAll()
+        while (viewport.items.length > 0) {
+            viewport.removeAt(0);
+        }
 
         if (value.hashString === '/main') {
             let [HeaderContainer, MainContainer] = await Promise.all([
                 import('./HeaderContainer.mjs'),
                 import('./MainContainer.mjs')
             ]);
-
-            console.log(MainContainer);
 
             viewport.add([{
                     module: HeaderContainer.default,
@@ -48,8 +52,6 @@ class ViewportController extends Component {
                 module: MainContainer.default,
             }])
         } else {
-            console.log('create login');
-
             let LoginContainer = await import('./login/Container.mjs');
 
             viewport.add(LoginContainer.default);
