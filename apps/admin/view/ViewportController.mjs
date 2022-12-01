@@ -14,6 +14,48 @@ class ViewportController extends Component {
         className: 'Admin.view.ViewportController'
     }}
 
+    onComponentConstructed() {
+        super.onComponentConstructed();
+
+        if (!Neo.config.hash) {
+            this.onHashChange({
+                hashString: ''
+            })
+        }
+    }
+
+    /**
+     * @param {Object} value
+     * @param {Object} oldValue
+     */
+    async onHashChange(value, oldValue) {
+        console.log('onHashChange', value);
+
+        let viewport = this.component;
+
+        if (value.hashString === '/main') {
+            let [HeaderContainer, MainContainer] = await Promise.all([
+                import('./HeaderContainer.mjs'),
+                import('./MainContainer.mjs')
+            ]);
+
+            console.log(MainContainer);
+
+            viewport.add([{
+                    module: HeaderContainer.default,
+                    flex  : 'none'
+                }, {
+                module: MainContainer.default,
+            }])
+        } else {
+            console.log('create login');
+
+            let LoginContainer = await import('./login/Container.mjs');
+
+            viewport.add(LoginContainer.default);
+        }
+    }
+
     /**
      * @param {Object} data
      */

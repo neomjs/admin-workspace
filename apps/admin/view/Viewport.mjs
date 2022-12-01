@@ -1,6 +1,4 @@
 import BaseViewport       from '../../../node_modules/neo.mjs/src/container/Viewport.mjs';
-import HeaderContainer    from './HeaderContainer.mjs';
-import MainContainer      from './MainContainer.mjs';
 import ViewportController from './ViewportController.mjs';
 
 /**
@@ -25,12 +23,7 @@ class Viewport extends BaseViewport {
         /**
          * @member {Object[]} items
          */
-        items: [{
-            module: HeaderContainer,
-            flex  : 'none'
-        }, {
-            module: MainContainer
-        }]
+        items: []
     }}
 }
 
