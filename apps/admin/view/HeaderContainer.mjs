@@ -28,6 +28,11 @@ class HeaderContainer extends Toolbar {
             handler: 'onSwitchThemeButtonClick',
             iconCls: 'fa fa-moon',
             text   : 'Dark Theme'
+        }, {
+            module   : Button,
+            editRoute: false,
+            iconCls  : 'fa fa-sign-out',
+            route    : '/login'
         }]
     }}
 }

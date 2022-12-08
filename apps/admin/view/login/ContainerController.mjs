@@ -19,9 +19,7 @@ class ContainerController extends Component {
     onSubmitButtonClick(data) {
         let formContainer = this.getReference('form-container');
 
-        formContainer.validate();
-
-        if (formContainer.isValid()) {
+        if (formContainer.validate()) {
             Neo.Main.setRoute({
                 value: '/main'
             });

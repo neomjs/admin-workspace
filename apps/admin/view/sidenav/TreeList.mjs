@@ -38,6 +38,20 @@ class TreeList extends BaseTreeList {
             me.update();
         });
     }
+
+    /**
+     * @param {Boolean} value
+     * @param {Boolean} oldValue
+     */
+    afterSetMounted(value, oldValue) {
+        super.afterSetMounted(value, oldValue);
+
+        if (value) {
+            console.log(this.store);
+            console.log(this.getVdomRoot());
+            // this.update();
+        }
+    }
 }
 
 Neo.applyClassConfig(TreeList);
