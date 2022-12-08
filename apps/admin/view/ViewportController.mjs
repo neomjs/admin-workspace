@@ -1,5 +1,4 @@
 import Component from '../../../node_modules/neo.mjs/src/controller/Component.mjs';
-import NeoArray  from '../../../node_modules/neo.mjs/src/util/Array.mjs';
 
 /**
  * @class Admin.view.ViewportController
@@ -45,11 +44,11 @@ class ViewportController extends Component {
             ]);
 
             viewport.add([{
-                    module: HeaderContainer.default,
-                    flex  : 'none'
-                }, {
+                module: HeaderContainer.default,
+                flex: 'none'
+            }, {
                 module: MainContainer.default,
-            }])
+            }]);
         } else {
             let LoginContainer = await import('./login/Container.mjs');
 

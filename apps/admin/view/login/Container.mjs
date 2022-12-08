@@ -33,21 +33,34 @@ class Container extends Base {
             layout   : {ntype: 'vbox', align: 'center', pack: 'center'},
             reference: 'form-container',
 
+            itemDefaults: {
+                labelPosition: 'inline',
+                required     : true,
+                width        : '20vw'
+            },
             items: [{
                 module: Label,
-                text  : 'Login'
+                text  : 'Login',
+                cls: ['login-header', 'neo-label']
             }, {
                 module       : TextField,
-                labelPosition: 'inline',
+                name         : 'UserName',
                 labelText    : 'Username',
-                required     : true,
-                width        : '20vw'
+                // @param [silent=true]
+                validate     : function() {
+                    let regex = /\d/,
+                        hasError = regex.test(this.value);
+
+                    this.error = hasError ? 'Dont use Numbers' : null;
+
+                    return !hasError;
+                }
             }, {
                 module       : PasswordField,
-                labelPosition: 'inline',
+                name         : 'Password',
                 labelText    : 'Password',
-                required     : true,
-                width        : '20vw'
+                minLength    : 4,
+                maxLength    : 4
             }]
         }, {
             module : Button,
