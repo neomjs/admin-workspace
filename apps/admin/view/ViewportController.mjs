@@ -34,9 +34,8 @@ class ViewportController extends Component {
     async onHashChange(value, oldValue) {
         let viewport = this.component;
 
-        // todo: implement container.removeAll()
-        while (viewport.items.length > 0) {
-            viewport.removeAt(0);
+        if (viewport.items.length > 0) {
+            viewport.removeAll();
         }
 
         if (value.hashString === '/main') {
