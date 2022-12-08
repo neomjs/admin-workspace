@@ -1,0 +1,9 @@
+$neoMap: map-merge($neoMap, (
+    'admin-background-color': #f2f2f2
+));
+
+@if $useCssVars == true {
+    :root .neo-theme-light { // .admin-login-container
+        --admin-background-color: #{neo(admin-background-color)};
+    }
+}
